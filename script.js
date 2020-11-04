@@ -10,14 +10,16 @@ let score=0;
 let currentQuestionIndex = 0;
 let currentChoiceIndex =0;
 
+//Before Quiz Start
 nextBtnEl.style.visibility = 'collapse';
 
-//Event listener for the start button
+//When the user starts the Quiz
 startButton.addEventListener('click', function () {
 	startButton.style.visibility = 'collapse';
 	beginQuestionEl.style.visibility = 'collapse';
 	nextBtnEl.style.visibility = 'visible';
 	questionContainerEl.style.visibility = 'visible';
+	beginQuestionEl.style.visibility = 'collapse';
 
 	// Timer
 	let counter= 60;
@@ -91,5 +93,4 @@ var quizQuestions = [
 		answer: 'console.log'
 	},
 ];
-
 
