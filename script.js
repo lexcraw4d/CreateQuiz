@@ -1,80 +1,108 @@
-let timerEl = document.querySelector('#timer');
-let startButton = document.querySelector('#startbtn');
-let quizStart = document.querySelector('#quiz-start');
-let rules = document.querySelector('#rules');
+let timerEl= document.querySelector('#timer');
+let startButton= document.querySelector('#startbtn');
 let correctMessage = document.querySelector('#correct-message');
-let questionChoices = document.querySelector('.choices');
-let questionContainerEl = document.getElementById('questioncontainer');
-let nextBtnEl = document.getElementById('nextBtn');
-let userChoice;
-let countdownEl = document.querySelector('#countdown');
-let mainEl = document.querySelector('main');
-let score;
+let questionChoices= document.querySelector('.choices');
+let questionContainerEl= document.getElementById('questioncontainer');
+let nextBtnEl= document.getElementById('nextBtn');
+let beginQuestionEl=document.getElementById('beginQuestion');
+let currentQuestionIndex = 0;
 
+//Before Quiz Start
 nextBtnEl.style.visibility = 'collapse';
 
-//Event listener for the start button
+//When the user starts the Quiz
 startButton.addEventListener('click', function () {
 	startButton.style.visibility = 'collapse';
 	nextBtnEl.style.visibility = 'visible';
 	questionContainerEl.style.visibility = 'visible';
+	beginQuestionEl.style.visibility = 'collapse';
 
-	// questionChoices.style.visibility = "display";
+	
+//Initial Timer Settings
 	let counter = 60;
 	let timerInterval = setInterval(function () {
 		timerEl.textContent = counter + ' ' + 'seconds left';
 		counter--;
+		if (counter === -1) {
+			clearInterval(timerInterval);
+		}
+		if (counter === -1) {
+			alert("Time's up! Let's see your scores.");
+		}
+		
 	}, 1000);
-	if (counter === 0) {
-		clearInterval(timerInterval);
-	}
 	quizContent();
 });
-let currentQuestion = quizQuestions.question;
-console.log(currentQuestion);
-// function quizContent () {
-// questionContainerEl.textContent = currentQuestion;
+//Display Questions and Answers
+function quizContent() {
+	let question = quizQuestions[currentQuestionIndex];
+	questionContainerEl.innerText = question.question;
+	for (let i=0;i<question.choices.length;i++){
+	var buttons = document.createElement("button");
+	buttons.textContent = question.choices[i];
+	questionChoices.append(buttons)}
+	buttons.addEventListener('click',checkAnswer());
+	
+	}
 
+
+
+function checkAnswer(answer) {
+	let question = quizQuestions[currentQuestionIndex];
+	if(answer === question.answer) {
+		correctMessage.innerText
+	}
+	if (answer === !question.answer){
+		counter=-10;
+	}
+	//next button?
+	currentQuestionIndex++;
+	quizContent();
+
+}
+//End game psuedo
+//make elements hide
+//create div for scores
+//save/initials
+//button to take to html highscore
+//create local storage for current score
+
+
+//High Scores
+//make score div hide
+//div highscore
+//retrieve from local storage
+//display previous scores in div
+
+
+
+//Questions
 var quizQuestions = [
 	{
 		question:
 			'Which language is not one of the three core languages of the web?',
 		choices: ['CSS', 'HTML', 'Java', 'JavaScript'],
-		answer: 'Java',
+		answer: 'Java'
 	},
 	{
 		question: 'JavaScript variables are written in which type of case?',
 		choices: ['lowercase', 'camelCase', 'UPPERCASE', 'CapitalCase'],
-		answer: 'camelCase',
+		answer: 'camelCase'
 	},
 	{
 		question:
 			'Which language below can change the look and style of a webpage?',
 		choices: ['Python', 'CSS', 'JavaScript', 'HTML'],
-		answer: 'CSS',
+		answer: 'CSS'
 	},
 	{
 		question: 'Fill in the blank: Traversing the _______',
 		choices: ['Ruby on Rails', 'Python', 'Rust', 'DOM'],
-		answer: 'DOM',
+		answer: 'DOM'
 	},
 	{
 		question: 'Which function will display data in the browser console?',
 		choices: ['console.log', 'document.write[]', 'window.alert()', 'interHTML'],
-		answer: 'console.log',
+		answer: 'console.log'
 	},
 ];
-
-// console.log(quizQuestions);
-// console.log(quizQuestions[0]);
-// console.log(quizQuestions[i].answer);
-
-// for (i = 0; i < quizQuestions[0].choices.length; i++) {
-//     console.log(quizQuestions[0].choices[i])
-// }
-
-//WHEN I click the start button
-
-// Event listener for start button - quizQuestions
-
-// Quiz start function starts here
