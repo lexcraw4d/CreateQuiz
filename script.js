@@ -1,20 +1,19 @@
 let timerEl= document.querySelector('#timer');
 let beginQuestionEl=document.querySelector('#beginQuestion')
 let startButton= document.querySelector('#startbtn');
-let correctMessage = document.querySelector('#correct-message');
+let correctMessage = document.querySelector('#correctMessage');
 let questionChoices= document.querySelector('.choices');
-let questionContainerEl= document.getElementById('questioncontainer');
+let questionContainerEl= document.getElementById('questionContainer');
 let nextBtnEl= document.getElementById('nextBtn');
-let countdownEl= document.querySelector('#countdown');
-let score=0;
 let currentQuestionIndex = 0;
 let currentChoiceIndex =0;
 
+let counter = 60;
 //Before Quiz Start
 nextBtnEl.style.visibility = 'collapse';
 
 //When the user starts the Quiz
-startButton.addEventListener('click', function () {
+	startButton.addEventListener('click', function () {
 	startButton.style.visibility = 'collapse';
 	beginQuestionEl.style.visibility = 'collapse';
 	nextBtnEl.style.visibility = 'visible';
@@ -22,39 +21,84 @@ startButton.addEventListener('click', function () {
 	beginQuestionEl.style.visibility = 'collapse';
 
 	// Timer
-	let counter= 60;
 	let timerInterval=setInterval(function () {
 		timerEl.textContent = counter + ' ' + 'seconds left';
 		counter--;
-		if (counter === -1) {
+		if (counter <=0) {
 			clearInterval(timerInterval);
 		}
-		if (counter === -1) {
+		if (counter <=0) {
 			alert("Time's up! Let's see your scores.");
 		}
 	}, 1000);
+
 	quizContent();
 });
 //Display Questions and Answers
 function quizContent() {
-	let question = quizQuestions[currentQuestionIndex];
-	questionContainerEl.innerText = question.question;
-	for (let i=0;i<question.choices.length;i++){
-	let buttons = document.createElement("button");
-	buttons.textContent = question.choices[i];
-	questionChoices.append(buttons)}
-	buttons.addEventListener('click',checkAnswer());
+	questionChoices.innerHTML="";
+	let current_Question = displayQuestionText[currentQuestionIndex];
+	questionContainerEl.innerText = current_Question.questionAsked;
 	
+	for (let i=0;i<current_Question.choices.length;i++){
+	let buttons = document.createElement("button");
+
+	buttons.textContent = current_Question.choices[i];
+	buttons.addEventListener('click',checkAnswer);
+	questionChoices.append(buttons)
 	}
+	
+}
+
 //Checking answer against buttons
-function checkAnswer(answer) {
-	let question = quizQuestions[currentQuestionIndex];
-	if(answer === question.answer) {
-		correctMessage.innerText="CORRECT!"
+function checkAnswer() {
+	let current_Question = displayQuestionText[currentQuestionIndex];
+	if(this.textContent === current_Question.answer) {
+		correctMessage.innerText="CORRECT!";
 	}
+	else {
+		counter-=10;
+		correctMessage.innerText="Maybe next time.";
+		}
+	// let nextBtnEl =
 	currentQuestionIndex++;
 	quizContent();
 }
+
+
+var displayQuestionText = [
+	{
+		questionAsked:
+			'Which language is not one of the three core languages of the web?',
+		choices: ['CSS', 'HTML', 'Java', 'JavaScript'],
+		answer: ['Java']
+	},
+	{
+		questionAsked: 'JavaScript variables are written in which type of case?',
+		choices: ['lowercase', 'camelCase', 'UPPERCASE', 'CapitalCase'],
+		answer: 'camelCase'
+	},
+	{
+		questionAsked:
+			'Which language below can change the look and style of a webpage?',
+		choices: ['Python', 'CSS', 'JavaScript', 'HTML'],
+		answer: 'CSS'
+	},
+	{
+		questionAsked: 'Fill in the blank: Traversing the _______',
+		choices: ['Ruby on Rails', 'Python', 'Rust', 'DOM'],
+		answer: 'DOM'
+	},
+	{
+		questionAsked: 'Which function will display data in the browser console?',
+		choices: ['console.log', 'document.write[]', 'window.alert()', 'interHTML'],
+		answer: 'console.log'
+	},
+];
+
+//nextQuestion()
+//function gameover(){
+//if (time>0)win else we
 //End Game
 //hide all other elements
 //clear div 
@@ -64,33 +108,3 @@ function checkAnswer(answer) {
 //pull saved highscores from storage
 //show past results
 //Questions
-var quizQuestions = [
-	{
-		question:
-			'Which language is not one of the three core languages of the web?',
-		choices: ['CSS', 'HTML', 'Java', 'JavaScript'],
-		answer: 'Java'
-	},
-	{
-		question: 'JavaScript variables are written in which type of case?',
-		choices: ['lowercase', 'camelCase', 'UPPERCASE', 'CapitalCase'],
-		answer: 'camelCase'
-	},
-	{
-		question:
-			'Which language below can change the look and style of a webpage?',
-		choices: ['Python', 'CSS', 'JavaScript', 'HTML'],
-		answer: 'CSS'
-	},
-	{
-		question: 'Fill in the blank: Traversing the _______',
-		choices: ['Ruby on Rails', 'Python', 'Rust', 'DOM'],
-		answer: 'DOM'
-	},
-	{
-		question: 'Which function will display data in the browser console?',
-		choices: ['console.log', 'document.write[]', 'window.alert()', 'interHTML'],
-		answer: 'console.log'
-	},
-];
-
