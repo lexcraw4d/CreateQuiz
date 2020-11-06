@@ -4,19 +4,20 @@ let startButton= document.querySelector('#startbtn');
 let correctMessage = document.querySelector('#correctMessage');
 let questionChoices= document.querySelector('.choices');
 let questionContainerEl= document.getElementById('questionContainer');
-let nextBtnEl= document.getElementById('nextBtn');
+let score=document.getElementById("score");
+// let nextBtnEl= document.getElementById('nextBtn');
 let currentQuestionIndex = 0;
-let currentChoiceIndex =0;
+
 
 let counter = 60;
 //Before Quiz Start
-nextBtnEl.style.visibility = 'collapse';
+// nextBtnEl.style.visibility = 'collapse';
 
 //When the user starts the Quiz
 	startButton.addEventListener('click', function () {
 	startButton.style.visibility = 'collapse';
 	beginQuestionEl.style.visibility = 'collapse';
-	nextBtnEl.style.visibility = 'visible';
+	// nextBtnEl.style.visibility = 'visible';
 	questionContainerEl.style.visibility = 'visible';
 	beginQuestionEl.style.visibility = 'collapse';
 
@@ -25,11 +26,12 @@ nextBtnEl.style.visibility = 'collapse';
 		timerEl.textContent = counter + ' ' + 'seconds left';
 		counter--;
 		if (counter <=0) {
+			endgame();
 			clearInterval(timerInterval);
 		}
-		if (counter <=0) {
-			alert("Time's up! Let's see your scores.");
-		}
+		// if (counter <=0) {
+		// 	alert("Time's up! Let's see your scores.");
+		// }
 	}, 1000);
 
 	quizContent();
@@ -60,11 +62,25 @@ function checkAnswer() {
 		counter-=10;
 		correctMessage.innerText="Maybe next time.";
 		}
-	// let nextBtnEl =
-	currentQuestionIndex++;
+	if(currentQuestionIndex === displayQuestionText.length || counter ===0){
+		endgame()
+	}
+	console.log("Question index: "+currentQuestionIndex);
 	quizContent();
+	currentQuestionIndex++;
 }
+// End Game
+function endgame(){
+	if (counter ===0){
+		score.innerText="Time is up your score is"+counter;
+		
 
+	}
+	setTimeout(function () {
+		window.location.href= 'scores.html'; // the redirect goes here
+ },1000);
+
+}
 
 var displayQuestionText = [
 	{
@@ -93,7 +109,7 @@ var displayQuestionText = [
 		questionAsked: 'Which function will display data in the browser console?',
 		choices: ['console.log', 'document.write[]', 'window.alert()', 'interHTML'],
 		answer: 'console.log'
-	},
+	}
 ];
 
 //nextQuestion()
