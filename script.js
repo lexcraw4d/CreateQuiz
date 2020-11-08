@@ -4,20 +4,24 @@ let startButton= document.querySelector('#startbtn');
 let correctMessage = document.querySelector('#correctMessage');
 let questionChoices= document.querySelector('.choices');
 let questionContainerEl= document.getElementById('questionContainer');
+//Next button to be considered in the future
 // let nextBtnEl= document.getElementById('nextBtn');
 let currentQuestionIndex = 0;
 let rulesEl=document.getElementById('#rules');
-
-
+let formScoreEl = document.querySelector(".formScore");
 let counter = 60;
-//Before Quiz Start
-// nextBtnEl.style.visibility = 'collapse';
+let questionTotal=5;
 
-//When the user starts the Quiz
+
+//Score of the user
+let scoreArr = [];
+
+//When the user starts the quiz
 	startButton.addEventListener('click', function () {
 	startButton.style.visibility = 'collapse';
 	beginQuestionEl.style.visibility = 'collapse';
-	// nextBtnEl.style.visibility = 'visible';
+	//Eventually could add next button here.
+	// nextBtnEl.style.visibility = 'visible'; 
 	questionContainerEl.style.visibility = 'visible';
 	beginQuestionEl.style.visibility = 'collapse';
 
@@ -29,6 +33,13 @@ let counter = 60;
 			endgame();
 			clearInterval(timerInterval);
 		}
+		if( counter === 0) {
+            clearInterval(timerInterval);
+            formScoreEl.textContent =  counter;
+            scoreArr.push(counter);
+        }
+        // if all questions are answered before the timer runs out, it will got to the form page
+      
 		// if (counter <=0) {
 		// 	alert("Time's up! Let's see your scores.");
 		// }

@@ -14,7 +14,7 @@ This quiz was created using HTML, CSS, and JavaScript. The following rules are a
 The quiz saves your score via local storage so that you can return and try and beat your previous scores.
 
 This source code is available to everyone under the standard [MIT License](https://github.com/microsoft/vscode/blob/master/LICENSE.txt).
-![Picture of the quiz](file:///C:\Users\lexc2\OneDrive\Desktop\Homework\CreateQuiz\Assets\Quizpic.JPG)
+![QUIZ PIC](Assets/Quizpic.JPG)
 
 # Installation
 To install please visit [my repository](https://github.com/lexcraw4d/CreateQuiz) and look at the uploaded files via GitHub Deployment.
