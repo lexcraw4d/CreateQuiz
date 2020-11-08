@@ -6,12 +6,9 @@ let questionChoices = document.querySelector('.choices');
 let questionContainerEl = document.getElementById('questionContainer');
 // let nextBtnEl= document.getElementById('nextBtn');
 let currentQuestionIndex = 0;
-let rulesEl = document.getElementById('#rules');
-let submitEl=document.getElementById('#submit');
+let rulesEl = document.getElementById('rules');
 
 let counter = 60;
-//May put next button in future
-// nextBtnEl.style.visibility = 'collapse';
 
 //Home page start of Quiz
 //When the user starts the Quiz
@@ -60,37 +57,25 @@ function checkAnswer() {
 		counter -= 10;
 		correctMessage.innerText = 'Maybe next time.';
 	}
-	if (currentQuestionIndex === displayQuestionText.length || counter === 0) {
+	if (
+		currentQuestionIndex === displayQuestionText.length - 1 ||
+		counter === 0
+	) {
 		endgame();
+		return;
 	}
 
-	quizContent();
 	currentQuestionIndex++;
+	quizContent();
 }
 
 // End Game and High Score page redirection
 function endgame() {
-	if (counter === 0) {
-		setTimeout(function () {
-			window.location.href = 'scores.html'; // the redirect goes here
-		}, 1000);
-	}
+	setTimeout(function () {
+		sessionStorage.setItem('score', counter);
+		window.location.href = 'scores.html'; // the redirect goes here
+	}, 1000);
 }
-// submitEl.addEventListener(onclick,pushData);
-// var myArray=[""];
-// function pushData(){
-// 	var inputText=document.getElementById('initials').value;
-// 	//append data to the array
-// 	myArray.push(inputText);
-
-// 	var pval = "";
-// 	if (i=0;i<myArray.length;i++)
-// 	{
-// 		pval=pval+myArray(i);
-// 	}
-// 	document.getElementById('pText').innerHTML=pval
-
-// }
 
 //Questions displayed in Quiz
 var displayQuestionText = [
@@ -98,7 +83,7 @@ var displayQuestionText = [
 		questionAsked:
 			'Which language is not one of the three core languages of the web?',
 		choices: ['CSS', 'HTML', 'Java', 'JavaScript'],
-		answer: ['Java'],
+		answer: 'Java',
 	},
 	{
 		questionAsked: 'JavaScript variables are written in which type of case?',
