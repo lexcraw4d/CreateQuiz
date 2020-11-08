@@ -4,9 +4,9 @@ let startButton= document.querySelector('#startbtn');
 let correctMessage = document.querySelector('#correctMessage');
 let questionChoices= document.querySelector('.choices');
 let questionContainerEl= document.getElementById('questionContainer');
-let score=document.getElementById("score");
 // let nextBtnEl= document.getElementById('nextBtn');
 let currentQuestionIndex = 0;
+let rulesEl=document.getElementById('#rules');
 
 
 let counter = 60;
@@ -55,6 +55,7 @@ function quizContent() {
 //Checking answer against buttons
 function checkAnswer() {
 	let current_Question = displayQuestionText[currentQuestionIndex];
+
 	if(this.textContent === current_Question.answer) {
 		correctMessage.innerText="CORRECT!";
 	}
@@ -65,21 +66,18 @@ function checkAnswer() {
 	if(currentQuestionIndex === displayQuestionText.length || counter ===0){
 		endgame()
 	}
-	console.log("Question index: "+currentQuestionIndex);
+	
 	quizContent();
 	currentQuestionIndex++;
 }
 // End Game
 function endgame(){
 	if (counter ===0){
-		score.innerText="Time is up your score is"+counter;
-		
-
-	}
 	setTimeout(function () {
 		window.location.href= 'scores.html'; // the redirect goes here
  },1000);
 
+}
 }
 
 var displayQuestionText = [
@@ -114,13 +112,7 @@ var displayQuestionText = [
 
 //nextQuestion()
 //function gameover(){
-//if (time>0)win else we
-//End Game
-//hide all other elements
-//clear div 
-//prompt user for initials
 //save to local storage
-//link highscore.html
 //pull saved highscores from storage
 //show past results
 //Questions

@@ -1,3 +1,20 @@
-#quizHeader {
-    background-color: cornflowerblue;
+#quizheader {
+    background-color: #C2D8B9
+}
+
+.card-body{
+    background-color:#E4F0D0;
+}
+#rules {
+    background-color:#E4F0D0;
+}
+#startbtn {
+    background-color: #738290;
+}
+.createdBy {
+    background-color: #C2D8B9;
+
+}
+#timer{
+    background-color: #FFFCF7;
 }
