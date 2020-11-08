@@ -1,126 +1,113 @@
-let timerEl= document.querySelector('#timer');
-let beginQuestionEl=document.querySelector('#beginQuestion')
-let startButton= document.querySelector('#startbtn');
+let timerEl = document.querySelector('#timer');
+let beginQuestionEl = document.querySelector('#beginQuestion');
+let startButton = document.querySelector('#startbtn');
 let correctMessage = document.querySelector('#correctMessage');
-let questionChoices= document.querySelector('.choices');
-let questionContainerEl= document.getElementById('questionContainer');
-//Next button to be considered in the future
+let questionChoices = document.querySelector('.choices');
+let questionContainerEl = document.getElementById('questionContainer');
 // let nextBtnEl= document.getElementById('nextBtn');
 let currentQuestionIndex = 0;
-let rulesEl=document.getElementById('#rules');
-let formScoreEl = document.querySelector(".formScore");
+let rulesEl = document.getElementById('#rules');
+
 let counter = 60;
-let questionTotal=5;
+//May put next button in future
+// nextBtnEl.style.visibility = 'collapse';
 
-
-//Score of the user
-let scoreArr = [];
-
-//When the user starts the quiz
-	startButton.addEventListener('click', function () {
+//Home page start of Quiz
+//When the user starts the Quiz
+startButton.addEventListener('click', function () {
 	startButton.style.visibility = 'collapse';
 	beginQuestionEl.style.visibility = 'collapse';
-	//Eventually could add next button here.
-	// nextBtnEl.style.visibility = 'visible'; 
 	questionContainerEl.style.visibility = 'visible';
 	beginQuestionEl.style.visibility = 'collapse';
+	//Next button to be added in future
+	// nextBtnEl.style.visibility = 'visible';
 
 	// Timer
-	let timerInterval=setInterval(function () {
+	let timerInterval = setInterval(function () {
 		timerEl.textContent = counter + ' ' + 'seconds left';
 		counter--;
-		if (counter <=0) {
+		if (counter <= 0) {
 			endgame();
 			clearInterval(timerInterval);
 		}
-		if( counter === 0) {
-            clearInterval(timerInterval);
-            formScoreEl.textContent =  counter;
-            scoreArr.push(counter);
-        }
-        // if all questions are answered before the timer runs out, it will got to the form page
-      
-		// if (counter <=0) {
-		// 	alert("Time's up! Let's see your scores.");
-		// }
 	}, 1000);
-
 	quizContent();
 });
+
 //Display Questions and Answers
 function quizContent() {
-	questionChoices.innerHTML="";
+	questionChoices.innerHTML = '';
 	let current_Question = displayQuestionText[currentQuestionIndex];
 	questionContainerEl.innerText = current_Question.questionAsked;
-	
-	for (let i=0;i<current_Question.choices.length;i++){
-	let buttons = document.createElement("button");
 
-	buttons.textContent = current_Question.choices[i];
-	buttons.addEventListener('click',checkAnswer);
-	questionChoices.append(buttons)
+	for (let i = 0; i < current_Question.choices.length; i++) {
+		let buttons = document.createElement('button');
+
+		buttons.textContent = current_Question.choices[i];
+		buttons.addEventListener('click', checkAnswer);
+		questionChoices.append(buttons);
 	}
-	
 }
 
-//Checking answer against buttons
+//Checking answer against user's choice (currently correct not working)
 function checkAnswer() {
 	let current_Question = displayQuestionText[currentQuestionIndex];
 
-	if(this.textContent === current_Question.answer) {
-		correctMessage.innerText="CORRECT!";
+	if (this.textContent === current_Question.answer) {
+		correctMessage.innerText = 'CORRECT!';
+	} else {
+		counter -= 10;
+		correctMessage.innerText = 'Maybe next time.';
 	}
-	else {
-		counter-=10;
-		correctMessage.innerText="Maybe next time.";
-		}
-	if(currentQuestionIndex === displayQuestionText.length || counter ===0){
-		endgame()
+	if (currentQuestionIndex === displayQuestionText.length || counter === 0) {
+		endgame();
 	}
-	
+
 	quizContent();
 	currentQuestionIndex++;
 }
-// End Game
-function endgame(){
-	if (counter ===0){
-	setTimeout(function () {
-		window.location.href= 'scores.html'; // the redirect goes here
- },1000);
 
-}
+// End Game and High Score page redirection
+function endgame() {
+	if (counter === 0) {
+		setTimeout(function () {
+			window.location.href = 'scores.html'; // the redirect goes here
+		}, 1000);
+	}
 }
 
+//Questions displayed in Quiz
 var displayQuestionText = [
 	{
 		questionAsked:
 			'Which language is not one of the three core languages of the web?',
 		choices: ['CSS', 'HTML', 'Java', 'JavaScript'],
-		answer: ['Java']
+		answer: ['Java'],
 	},
 	{
 		questionAsked: 'JavaScript variables are written in which type of case?',
 		choices: ['lowercase', 'camelCase', 'UPPERCASE', 'CapitalCase'],
-		answer: 'camelCase'
+		answer: 'camelCase',
 	},
 	{
 		questionAsked:
 			'Which language below can change the look and style of a webpage?',
 		choices: ['Python', 'CSS', 'JavaScript', 'HTML'],
-		answer: 'CSS'
+		answer: 'CSS',
 	},
 	{
 		questionAsked: 'Fill in the blank: Traversing the _______',
 		choices: ['Ruby on Rails', 'Python', 'Rust', 'DOM'],
-		answer: 'DOM'
+		answer: 'DOM',
 	},
 	{
 		questionAsked: 'Which function will display data in the browser console?',
 		choices: ['console.log', 'document.write[]', 'window.alert()', 'interHTML'],
-		answer: 'console.log'
-	}
+		answer: 'console.log',
+	},
 ];
 
+//Pseudocode
 //nextQuestion()
 //function gameover(){
 //save to local storage
