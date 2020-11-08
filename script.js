@@ -17,7 +17,7 @@ startButton.addEventListener('click', function () {
 	beginQuestionEl.style.visibility = 'collapse';
 	questionContainerEl.style.visibility = 'visible';
 	beginQuestionEl.style.visibility = 'collapse';
-	//Next button to be added in future
+	//Next button to be added in future?
 	// nextBtnEl.style.visibility = 'visible';
 
 	// Timer
@@ -47,10 +47,9 @@ function quizContent() {
 	}
 }
 
-//Checking answer against user's choice (currently correct not working)
+//Checking answer against user's choice (correc/incorrect)
 function checkAnswer() {
 	let current_Question = displayQuestionText[currentQuestionIndex];
-
 	if (this.textContent === current_Question.answer) {
 		correctMessage.innerText = 'CORRECT!';
 	} else {
