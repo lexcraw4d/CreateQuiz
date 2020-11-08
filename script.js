@@ -7,6 +7,7 @@ let questionContainerEl = document.getElementById('questionContainer');
 // let nextBtnEl= document.getElementById('nextBtn');
 let currentQuestionIndex = 0;
 let rulesEl = document.getElementById('#rules');
+let submitEl=document.getElementById('#submit');
 
 let counter = 60;
 //May put next button in future
@@ -75,6 +76,21 @@ function endgame() {
 		}, 1000);
 	}
 }
+// submitEl.addEventListener(onclick,pushData);
+// var myArray=[""];
+// function pushData(){
+// 	var inputText=document.getElementById('initials').value;
+// 	//append data to the array
+// 	myArray.push(inputText);
+
+// 	var pval = "";
+// 	if (i=0;i<myArray.length;i++)
+// 	{
+// 		pval=pval+myArray(i);
+// 	}
+// 	document.getElementById('pText').innerHTML=pval
+
+// }
 
 //Questions displayed in Quiz
 var displayQuestionText = [
