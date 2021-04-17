@@ -7,29 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel ="stylesheet" type = "style/css">
-    <link rel="stylesheet" href="">
+	<link rel="stylesheet" href="style.css" />
     
     <title>Scores</title>
 </head>
 
-<body>
-    <div class="SCORES">
-    <div class="container">
+<body class="body">
+    <div class="SCORES" id="scoresSyle">
+    <div class="container card">
+        <div class="card-body container-fluid">
          <h1 class="display-4 d-flex justify-content-center" >SCORES</h1>
-        <input type="text" id="initials"> Enter you initials to save your score.
+         <form>
+        <label for="initials"> Enter you initials to save your score.</label>
+        <input type="text" id="initials"> 
          <br/>
-         <button id="submit">Submit</button>
-         <button id="playAgain">Play Again</button>
+         <button type="button"  id="submit" class="btn btn-light">Submit</button>
+         <button type="button"  id="playAgain" class="btn btn-light">Play Again</button>
          <p id="pText"></p>
-    </div>
-        <form>
-         <div>
-             <ul class="list-group" id="initialStorage">
-               
-            </ul>
          </div>
-        </form>
+         </div>
     </div>
+    
     <script src="score.js"></script>
     </html>

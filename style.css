@@ -1,20 +1,34 @@
 #quizheader {
-    background-color: #C2D8B9
+    background-color: #C2D8B9;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
 }
 
 .card-body{
     background-color:#E4F0D0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    
 }
 #rules {
     background-color:#E4F0D0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
 }
 #startbtn {
     background-color: #738290;
 }
 .createdBy {
     background-color: #C2D8B9;
+    font-family: 'Montserrat', sans-serif;
 
 }
 #timer{
     background-color: #FFFCF7;
+    font-family: 'Montserrat', sans-serif;
+}
+#scoresStyle  {
+    background-color:#E4F0D0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
 }

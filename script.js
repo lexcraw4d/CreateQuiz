@@ -12,13 +12,14 @@ let counter = 60;
 
 //Home page start of Quiz
 //When the user starts the Quiz
-startButton.addEventListener('click', function () {
+	startButton.addEventListener('click', function () {
 	startButton.style.visibility = 'collapse';
 	beginQuestionEl.style.visibility = 'collapse';
 	questionContainerEl.style.visibility = 'visible';
 	beginQuestionEl.style.visibility = 'collapse';
 	//Next button to be added in future?
 	// nextBtnEl.style.visibility = 'visible';
+	rulesEl.style.visibility='collapse';
 
 	// Timer
 	let timerInterval = setInterval(function () {
@@ -43,7 +44,10 @@ function quizContent() {
 
 		buttons.textContent = current_Question.choices[i];
 		buttons.addEventListener('click', checkAnswer);
-		questionChoices.append(buttons);
+		questionChoices.append(buttons)
+		buttons.className ="btn btn-dark";
+		buttons.style.margin = "5px";
+		
 	}
 }
 
@@ -70,11 +74,10 @@ function checkAnswer() {
 
 // End Game and High Score page redirection
 function endgame() {
-	setTimeout(function () {
-		sessionStorage.setItem('score', counter);
-		window.location.href = 'scores.html'; // the redirect goes here
-	}, 1000);
+		window.location.href = 'scores.html'; // the 
+	// }, 1000);
 }
+
 
 //Questions displayed in Quiz
 var displayQuestionText = [
@@ -107,10 +110,3 @@ var displayQuestionText = [
 	},
 ];
 
-//Pseudocode
-//nextQuestion()
-//function gameover(){
-//save to local storage
-//pull saved highscores from storage
-//show past results
-//Questions
