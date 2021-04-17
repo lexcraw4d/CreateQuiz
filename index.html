@@ -1,52 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link
-			rel="stylesheet"
-			href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-			crossorigin="anonymous"
-    />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
-		<script
-			src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-			crossorigin="anonymous"
-		></script>
-		<link rel="stylesheet" href="style.css" />
-		<title>Quiz</title>
-	</head>
-	<body>
-		<h2 id="timer"></h2>
-		<div class="card text-center">
-			<h1 class="card-header" id="quizheader">JavaScript Quiz</h1>
-			<div class="card-body">
-				<h2 class="card-text" id="beginQuestion">
-					Are you ready to test your skills on JavaScript?
-				</h2>
-				<div class="card-text" id="questionContainer"></div>
-				<div class="card-text choices" id="questionChoices"></div>
-				<div class="correct" id="correctMessage"></div>
-				<button	type="button"	class="btn btn-primary btn-lg"	id="startbtn"	data-toggle="collapse">		Start	</button>
-				<!-- <button type="button" class="btn btn-secondary btn-lg " id= "nextBtn"  >Next</button> -->
-		
-      </div>
-      <section id="rules">
-        Rules:
-        <br />
-        1.You have 60 seconds to complete the quiz.
-        <br />
-        2.For each question you get right, there is no penalty.
-        <br />
-        3.For each question you get wrong, 10 seconds is removed from your
-        time.
-      </section>
-			<div class="card-footer text-muted createdBy">
-        Created by Lex Crawford
-			</div>
-			<script src="script.js"></script>
-			<script src="score.js"></script>
-		</body>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+	</script>
+	<link rel="stylesheet" href="style.css" />
+	<title>Quiz</title>
+</head>
+
+<body>
+	<h2 id="timer"></h2>
+	<div class="card text-center">
+		<h1 class="card-header" id="quizheader">JavaScript Quiz</h1>
+		<div class="card-body">
+			<h2 class="card-text" id="beginQuestion">
+				Are you ready to test your skills on JavaScript?
+			</h2>
+			<div class="card-text" id="questionContainer"></div>
+			<div class="card-text choices" id="questionChoices"></div>
+			<div class="correct" id="correctMessage"></div>
+			<button type="button" class="btn btn-primary btn-lg" id="startbtn" data-toggle="collapse"> Start </button>
+			<!-- <button type="button" class="btn btn-secondary btn-lg " id= "nextBtn"  >Next</button> -->
+
+		</div>
+		<section id="rules">
+			Rules:
+			<br />
+			1.You have 60 seconds to complete the quiz.
+			<br />
+			2.For each question you get right, there is no penalty.
+			<br />
+			3.For each question you get wrong, 10 seconds is removed from your
+			time.
+		</section>
+		<div class="card-footer text-muted createdBy">
+			Created by Lex Crawford
+		</div>
+		<script src="script.js"></script>
+		<script src="score.js"></script>
+</body>
+
 </html>
