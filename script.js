@@ -19,7 +19,6 @@ startButton.addEventListener('click', function () {
 	beginQuestionEl.style.visibility = 'collapse';
 	//Next button to be added in future?
 	// nextBtnEl.style.visibility = 'visible';
-	rulesEl.style.visibility = 'collapse';
 
 	// Timer
 	let timerInterval = setInterval(function () {
@@ -45,8 +44,6 @@ function quizContent() {
 		buttons.textContent = current_Question.choices[i];
 		buttons.addEventListener('click', checkAnswer);
 		questionChoices.append(buttons);
-		buttons.className = 'btn btn-dark';
-		buttons.style.margin = '5px';
 	}
 }
 
@@ -59,7 +56,10 @@ function checkAnswer() {
 		counter -= 10;
 		correctMessage.innerText = 'Maybe next time.';
 	}
-	if (currentQuestionIndex === displayQuestionText.length - 1 || counter === 0) {
+	if (
+		currentQuestionIndex === displayQuestionText.length - 1 ||
+		counter === 0
+	) {
 		endgame();
 		return;
 	}
@@ -70,13 +70,17 @@ function checkAnswer() {
 
 // End Game and High Score page redirection
 function endgame() {
-	window.location.href = 'scores.html'; // the redirect goes here
+	setTimeout(function () {
+		sessionStorage.setItem('score', counter);
+		window.location.href = 'scores.html'; // the redirect goes here
+	}, 1000);
 }
 
 //Questions displayed in Quiz
 var displayQuestionText = [
 	{
-		questionAsked: 'Which language is not one of the three core languages of the web?',
+		questionAsked:
+			'Which language is not one of the three core languages of the web?',
 		choices: ['CSS', 'HTML', 'Java', 'JavaScript'],
 		answer: 'Java',
 	},
@@ -86,7 +90,8 @@ var displayQuestionText = [
 		answer: 'camelCase',
 	},
 	{
-		questionAsked: 'Which language below can change the look and style of a webpage?',
+		questionAsked:
+			'Which language below can change the look and style of a webpage?',
 		choices: ['Python', 'CSS', 'JavaScript', 'HTML'],
 		answer: 'CSS',
 	},
@@ -101,3 +106,11 @@ var displayQuestionText = [
 		answer: 'console.log',
 	},
 ];
+
+//Pseudocode
+//nextQuestion()
+//function gameover(){
+//save to local storage
+//pull saved highscores from storage
+//show past results
+//Questions
